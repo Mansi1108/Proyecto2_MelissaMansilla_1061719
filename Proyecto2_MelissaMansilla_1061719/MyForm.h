@@ -8,6 +8,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Summary for MyForm
@@ -34,14 +35,25 @@ namespace Proyecto2MelissaMansilla1061719 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^  dataGridView1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Lunes;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column7;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column8;
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::Label^  lblaño;
+	private: System::Windows::Forms::Label^  lblMes;
+	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::Label^  lblSeleccion;
+	private: System::Windows::Forms::Label^  lblAgenda;
+	private: System::Windows::Forms::RichTextBox^  RTBrecordatorios;
+
+	private: System::Windows::Forms::Button^  btnAgregar;
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::MonthCalendar^  monthCalendar1;
 
 
 
@@ -72,84 +84,124 @@ namespace Proyecto2MelissaMansilla1061719 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Lunes = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->lblaño = (gcnew System::Windows::Forms::Label());
+			this->lblMes = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->lblSeleccion = (gcnew System::Windows::Forms::Label());
+			this->lblAgenda = (gcnew System::Windows::Forms::Label());
+			this->RTBrecordatorios = (gcnew System::Windows::Forms::RichTextBox());
+			this->btnAgregar = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->monthCalendar1 = (gcnew System::Windows::Forms::MonthCalendar());
 			this->SuspendLayout();
 			// 
-			// dataGridView1
+			// lblaño
 			// 
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
-				this->Lunes,
-					this->Column2, this->Column3, this->Column4, this->Column5, this->Column7, this->Column8
-			});
-			this->dataGridView1->Location = System::Drawing::Point(79, 141);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(584, 269);
-			this->dataGridView1->TabIndex = 0;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView1_CellContentClick);
+			this->lblaño->AutoSize = true;
+			this->lblaño->Location = System::Drawing::Point(27, 27);
+			this->lblaño->Name = L"lblaño";
+			this->lblaño->Size = System::Drawing::Size(42, 20);
+			this->lblaño->TabIndex = 1;
+			this->lblaño->Text = L"Año:";
 			// 
-			// Lunes
+			// lblMes
 			// 
-			this->Lunes->HeaderText = L"Lunes";
-			this->Lunes->Name = L"Lunes";
-			this->Lunes->Width = 75;
+			this->lblMes->AutoSize = true;
+			this->lblMes->Location = System::Drawing::Point(26, 77);
+			this->lblMes->Name = L"lblMes";
+			this->lblMes->Size = System::Drawing::Size(43, 20);
+			this->lblMes->TabIndex = 2;
+			this->lblMes->Text = L"Mes:";
 			// 
-			// Column2
+			// textBox1
 			// 
-			this->Column2->HeaderText = L"Martes";
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 75;
+			this->textBox1->Location = System::Drawing::Point(76, 27);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(126, 26);
+			this->textBox1->TabIndex = 3;
 			// 
-			// Column3
+			// textBox2
 			// 
-			this->Column3->HeaderText = L"Miercoles";
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 80;
+			this->textBox2->Location = System::Drawing::Point(76, 71);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(126, 26);
+			this->textBox2->TabIndex = 4;
 			// 
-			// Column4
+			// lblSeleccion
 			// 
-			this->Column4->HeaderText = L"Jueves";
-			this->Column4->Name = L"Column4";
-			this->Column4->Width = 75;
+			this->lblSeleccion->AutoSize = true;
+			this->lblSeleccion->Location = System::Drawing::Point(30, 129);
+			this->lblSeleccion->Name = L"lblSeleccion";
+			this->lblSeleccion->Size = System::Drawing::Size(293, 20);
+			this->lblSeleccion->TabIndex = 5;
+			this->lblSeleccion->Text = L"Selecciona una fecha antes de agregar*";
 			// 
-			// Column5
+			// lblAgenda
 			// 
-			this->Column5->HeaderText = L"Viernes";
-			this->Column5->Name = L"Column5";
-			this->Column5->Width = 75;
+			this->lblAgenda->AutoSize = true;
+			this->lblAgenda->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblAgenda->Location = System::Drawing::Point(475, 48);
+			this->lblAgenda->Name = L"lblAgenda";
+			this->lblAgenda->Size = System::Drawing::Size(141, 40);
+			this->lblAgenda->TabIndex = 6;
+			this->lblAgenda->Text = L"Agenda";
 			// 
-			// Column7
+			// RTBrecordatorios
 			// 
-			this->Column7->HeaderText = L"Sabado";
-			this->Column7->Name = L"Column7";
-			this->Column7->Width = 80;
+			this->RTBrecordatorios->Location = System::Drawing::Point(433, 171);
+			this->RTBrecordatorios->Name = L"RTBrecordatorios";
+			this->RTBrecordatorios->ReadOnly = true;
+			this->RTBrecordatorios->Size = System::Drawing::Size(203, 269);
+			this->RTBrecordatorios->TabIndex = 7;
+			this->RTBrecordatorios->Text = L"";
 			// 
-			// Column8
+			// btnAgregar
 			// 
-			this->Column8->HeaderText = L"Domingo";
-			this->Column8->Name = L"Column8";
-			this->Column8->Width = 80;
+			this->btnAgregar->Location = System::Drawing::Point(284, 27);
+			this->btnAgregar->Name = L"btnAgregar";
+			this->btnAgregar->Size = System::Drawing::Size(148, 72);
+			this->btnAgregar->TabIndex = 8;
+			this->btnAgregar->Text = L"Agregar Recordatorios";
+			this->btnAgregar->UseVisualStyleBackColor = true;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(478, 148);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(113, 20);
+			this->label1->TabIndex = 9;
+			this->label1->Text = L"Recordatorios:";
+			// 
+			// monthCalendar1
+			// 
+			this->monthCalendar1->Location = System::Drawing::Point(34, 178);
+			this->monthCalendar1->MaxSelectionCount = 1;
+			this->monthCalendar1->Name = L"monthCalendar1";
+			this->monthCalendar1->TabIndex = 10;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(858, 485);
-			this->Controls->Add(this->dataGridView1);
+			this->ClientSize = System::Drawing::Size(684, 485);
+			this->Controls->Add(this->monthCalendar1);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->btnAgregar);
+			this->Controls->Add(this->RTBrecordatorios);
+			this->Controls->Add(this->lblAgenda);
+			this->Controls->Add(this->lblSeleccion);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->lblMes);
+			this->Controls->Add(this->lblaño);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion

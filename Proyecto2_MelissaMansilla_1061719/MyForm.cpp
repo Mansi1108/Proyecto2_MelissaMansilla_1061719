@@ -3,7 +3,7 @@ using namespace System;
 using namespace System::Windows::Forms;
 
 [STAThreadAttribute]
-int main(array<String^>^ args) {
+int agenda(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	Proyecto2MelissaMansilla1061719::MyForm form;
