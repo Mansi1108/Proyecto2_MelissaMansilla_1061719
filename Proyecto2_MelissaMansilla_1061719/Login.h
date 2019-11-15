@@ -1,5 +1,5 @@
 #pragma once
-#include "MyForm.h"
+#include "Calendario.h"
 #include "Registro.h"
 
 namespace Proyecto2MelissaMansilla1061719 {
@@ -175,8 +175,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 					if ((Ouser == user) && (Ocontra == contra))
 					{
 						find = true;
-						MyForm^ Calendario = gcnew MyForm();
-						Calendario->Show();
+						Abrir();
 						this->Hide();
 					}
 					else if ((Ouser != user) && (Ocontra == contra))
@@ -229,13 +228,14 @@ namespace Proyecto2MelissaMansilla1061719 {
 	return false;
 }
 
-
-
-
-
-private: System::Void btnRegistro_Click(System::Object^  sender, System::EventArgs^  e) {
-	Registro^ Register = gcnew Registro();
-	Register->Show();
+	private: System::Void btnRegistro_Click(System::Object^  sender, System::EventArgs^  e) {
+		Registro^ Register = gcnew Registro();
+		Register->Show();
+	}
+private: System::Void Abrir()
+{
+	Calendario^ Calendario1 = gcnew Calendario();
+	Calendario1->Show();
 }
 };
 }
