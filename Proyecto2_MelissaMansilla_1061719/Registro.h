@@ -128,19 +128,24 @@ namespace Proyecto2MelissaMansilla1061719 {
 private: System::Void btnConfirmar_Click(System::Object^  sender, System::EventArgs^  e) {
 		String^ user = TBNombreR->Text;
 		String^ contra = TBContraseñaR->Text;
-		String^ UsersIN = user + ".csv";
-		StreamWriter^ crear = gcnew StreamWriter(UsersIN);
+		String^ UsersIN = user + ".csv"; //Crea los archivos csv individuales con los nombres de los usuarios ingresados.	
 		if (user != "" && contra != "")
 		{
-			StreamReader^ sr = gcnew StreamReader("Users.csv");
-			global = sr->ReadToEnd();
-			sr->Close();
-			global = global + "." + user + "," + contra;
-			StreamWriter^ sw = gcnew StreamWriter("Users.csv");
-			sw->Write(global);
-			sw->Close();
-
-			System::Windows::Forms::MessageBox::Show("Registrado :D");
+			if (Repetido(user)== false)
+			{
+				StreamReader^ sr = gcnew StreamReader("Users.csv");
+				global = sr->ReadToEnd();
+				sr->Close();
+				global = global + user + "," + contra + "."; //la cosa es en donde 
+				StreamWriter^ sw = gcnew StreamWriter("Users.csv");
+				sw->Write(global);
+				sw->Close();
+				System::Windows::Forms::MessageBox::Show("Registrado :D");
+			}
+			else
+			{
+				System::Windows::Forms::MessageBox::Show("Usuario ya existente");
+			}
 		}
 		else 
 		{
@@ -149,5 +154,34 @@ private: System::Void btnConfirmar_Click(System::Object^  sender, System::EventA
 
 		this->Close();
 	}
+private: System::Boolean Repetido(String^ user)
+{
+	StreamReader^ sr2 = gcnew StreamReader("Users.csv");
+	String^ cadena = sr2->ReadToEnd();
+	int pos;
+	
+	String^ Ouser;
+	String^ Ocontra;
+	String^ aux;
+	while (cadena != "")
+	{
+		pos = cadena->IndexOf(",");
+		Ouser = cadena->Substring(0, pos);
+		aux = cadena;
+		cadena = aux->Substring(pos + 1);
+		//Se saca la contraseña para no ocasionar problemas al extraer los usuarios y compararlos en tiempo real. 
+		pos = cadena->IndexOf(".");
+		Ocontra = cadena->Substring(0, pos);
+		aux = cadena;
+		cadena = aux->Substring(pos + 1);
+		if (Ouser == user)
+		{
+			return true;
+		}
+	} 
+	sr2->Close();
+	return false;
+}
+
 };
 }

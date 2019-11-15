@@ -139,13 +139,100 @@ namespace Proyecto2MelissaMansilla1061719 {
 
 		}
 #pragma endregion
+
 	private: System::Void Login_Load(System::Object^  sender, System::EventArgs^  e) {
 
 	}
+
 	private: System::Void btnIngresar_Click(System::Object^  sender, System::EventArgs^  e) {
-		MyForm^ Calendario = gcnew MyForm();
-		Calendario->Show();
+		String^ user = TBUser->Text;
+		String^ contra = TBContra->Text;
+
+		if (user != "" && contra != "")
+		{
+			if (Existe(user) == true)
+			{
+				StreamReader^ sr2 = gcnew StreamReader("Users.csv");
+				String^ cadena = sr2->ReadToEnd();
+				int pos;
+				String^ Ouser;
+				String^ Ocontra;
+				String^ aux;
+				bool find = false;
+
+				while ((cadena != "") && (find == false)) 
+				{
+					pos = cadena->IndexOf(",");
+					Ouser = cadena->Substring(0, pos);
+					aux = cadena;
+					cadena = aux->Substring(pos + 1);
+
+					pos = cadena->IndexOf(".");
+					Ocontra = cadena->Substring(0, pos);
+					aux = cadena;
+					cadena = aux->Substring(pos + 1);
+
+					if ((Ouser == user) && (Ocontra == contra))
+					{
+						find = true;
+						MyForm^ Calendario = gcnew MyForm();
+						Calendario->Show();
+						this->Hide();
+					}
+					else if ((Ouser != user) && (Ocontra == contra))
+					{
+						System::Windows::Forms::MessageBox::Show("Usuario inválido");
+					}
+					else if ((Ouser == user) && (Ocontra != contra))
+					{
+						System::Windows::Forms::MessageBox::Show("Contraseña inválida");
+					}
+				}
+				sr2->Close();
+			}
+			else
+			{
+				System::Windows::Forms::MessageBox::Show("Usuario no Registrado");
+			}
+		}
+		else
+		{
+			System::Windows::Forms::MessageBox::Show("Porfavor llenar todos los campos.");
+		}
 	}
+	private: System::Boolean Existe(String^ user)
+{
+	StreamReader^ sr2 = gcnew StreamReader("Users.csv");
+	String^ cadena = sr2->ReadToEnd();
+	int pos;
+
+	String^ Ouser;
+	String^ Ocontra;
+	String^ aux;
+	while (cadena != "")
+	{
+		pos = cadena->IndexOf(",");
+		Ouser = cadena->Substring(0, pos);
+		aux = cadena;
+		cadena = aux->Substring(pos + 1);
+		//Se saca la contraseña para no ocasionar problemas al extraer los usuarios y compararlos en tiempo real. 
+		pos = cadena->IndexOf(".");
+		Ocontra = cadena->Substring(0, pos);
+		aux = cadena;
+		cadena = aux->Substring(pos + 1);
+		if (Ouser == user)
+		{
+			return true;
+		}
+	}
+	sr2->Close();
+	return false;
+}
+
+
+
+
+
 private: System::Void btnRegistro_Click(System::Object^  sender, System::EventArgs^  e) {
 	Registro^ Register = gcnew Registro();
 	Register->Show();
