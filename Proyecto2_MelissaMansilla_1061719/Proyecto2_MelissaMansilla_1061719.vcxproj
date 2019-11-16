@@ -133,17 +133,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Actividad.cpp" />
     <ClCompile Include="Actividades.cpp" />
+    <ClCompile Include="Alarma.cpp" />
     <ClCompile Include="Calendario.cpp" />
     <ClCompile Include="Lista.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="Nodo.cpp" />
+    <ClCompile Include="Recordatorio.cpp" />
     <ClCompile Include="Registro.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actividad.h" />
     <ClInclude Include="Actividades.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Alarma.h" />
     <ClInclude Include="Calendario.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -153,6 +158,7 @@
       <DeploymentContent>false</DeploymentContent>
     </ClInclude>
     <ClInclude Include="Nodo.h" />
+    <ClInclude Include="Recordatorio.h" />
     <ClInclude Include="Registro.h">
       <FileType>CppForm</FileType>
     </ClInclude>

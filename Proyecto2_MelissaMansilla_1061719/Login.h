@@ -182,10 +182,6 @@ namespace Proyecto2MelissaMansilla1061719 {
 						Abrir(user);
 						this->Hide();
 					}
-					else if ((Ouser != user) && (Ocontra == contra))
-					{
-						System::Windows::Forms::MessageBox::Show("Usuario inválido");
-					}
 					else if ((Ouser == user) && (Ocontra != contra))
 					{
 						System::Windows::Forms::MessageBox::Show("Contraseña inválida");

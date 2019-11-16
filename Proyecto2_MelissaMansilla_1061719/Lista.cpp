@@ -20,16 +20,14 @@ void Lista::Push(int value) {
 	if (HeadL == nullptr)
 	{
 		HeadL = NuevoV;
-		UltimoL = NuevoV;
-		HeadL->anterior = UltimoL;
-		UltimoL->siguiente = HeadL;
+		//HeadL->anterior = UltimoL;
+		//UltimoL->siguiente = HeadL;
 	}
 	else
 	{
-		NuevoV->anterior = UltimoL;
 		NuevoV->siguiente = HeadL;
 		HeadL = NuevoV;
-		UltimoL->siguiente = HeadL;
+		//UltimoL->siguiente = HeadL;
 		(HeadL->siguiente)->anterior = HeadL;
 	}
 	NElementos++;

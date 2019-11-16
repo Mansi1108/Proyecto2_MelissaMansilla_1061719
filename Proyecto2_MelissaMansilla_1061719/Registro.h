@@ -128,7 +128,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 private: System::Void btnConfirmar_Click(System::Object^  sender, System::EventArgs^  e) {
 		String^ user = TBNombreR->Text;
 		String^ contra = TBContraseñaR->Text;
-		String^ UsersIN = user + ".csv"; //Crea los archivos csv individuales con los nombres de los usuarios ingresados.	
+		//Crea los archivos csv individuales con los nombres de los usuarios ingresados.	
 		if (user != "" && contra != "")
 		{
 			if (Repetido(user)== false)
@@ -136,11 +136,17 @@ private: System::Void btnConfirmar_Click(System::Object^  sender, System::EventA
 				StreamReader^ sr = gcnew StreamReader("Users.csv");
 				global = sr->ReadToEnd();
 				sr->Close();
-				global = global + user + "," + contra + "."; //la cosa es en donde 
+				global = global + user + "," + contra + "."; 
 				StreamWriter^ sw = gcnew StreamWriter("Users.csv");
 				sw->Write(global);
 				sw->Close();
 				System::Windows::Forms::MessageBox::Show("Registrado :D");
+				this->Close();
+				//Se crean los archivos individuales por cada usuario.
+				StreamWriter^ IndividualU = gcnew StreamWriter(user + ".csv");
+				IndividualU->WriteLine(user);
+				IndividualU->Close();
+				
 			}
 			else
 			{

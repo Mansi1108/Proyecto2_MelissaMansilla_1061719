@@ -41,7 +41,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 	private: System::Windows::Forms::MonthCalendar^  CalendarioM;
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Button^  btnAgregar;
-	private: System::Windows::Forms::RichTextBox^  RTBrecordatorios;
+
 	private: System::Windows::Forms::Label^  lblAgenda;
 	private: System::Windows::Forms::Label^  lblSeleccion;
 
@@ -56,6 +56,9 @@ namespace Proyecto2MelissaMansilla1061719 {
 	private: System::Windows::Forms::TextBox^  Tbmonth;
 	private: System::Windows::Forms::TextBox^  TBDia;
 	private: System::Windows::Forms::Label^  label3;
+
+
+	private: System::Windows::Forms::ListBox^  LBVista;
 	public:
 	private:
 
@@ -77,7 +80,6 @@ namespace Proyecto2MelissaMansilla1061719 {
 			this->CalendarioM = (gcnew System::Windows::Forms::MonthCalendar());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->btnAgregar = (gcnew System::Windows::Forms::Button());
-			this->RTBrecordatorios = (gcnew System::Windows::Forms::RichTextBox());
 			this->lblAgenda = (gcnew System::Windows::Forms::Label());
 			this->lblSeleccion = (gcnew System::Windows::Forms::Label());
 			this->TBaño = (gcnew System::Windows::Forms::TextBox());
@@ -89,6 +91,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 			this->Tbmonth = (gcnew System::Windows::Forms::TextBox());
 			this->TBDia = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->LBVista = (gcnew System::Windows::Forms::ListBox());
 			this->SuspendLayout();
 			// 
 			// btnBuscar
@@ -108,6 +111,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 			this->CalendarioM->MaxSelectionCount = 1;
 			this->CalendarioM->Name = L"CalendarioM";
 			this->CalendarioM->TabIndex = 21;
+			this->CalendarioM->DateSelected += gcnew System::Windows::Forms::DateRangeEventHandler(this, &Calendario::CalendarioM_DateSelected);
 			// 
 			// label1
 			// 
@@ -127,15 +131,6 @@ namespace Proyecto2MelissaMansilla1061719 {
 			this->btnAgregar->Text = L"Agregar Recordatorios";
 			this->btnAgregar->UseVisualStyleBackColor = true;
 			this->btnAgregar->Click += gcnew System::EventHandler(this, &Calendario::btnAgregar_Click);
-			// 
-			// RTBrecordatorios
-			// 
-			this->RTBrecordatorios->Location = System::Drawing::Point(440, 192);
-			this->RTBrecordatorios->Name = L"RTBrecordatorios";
-			this->RTBrecordatorios->ReadOnly = true;
-			this->RTBrecordatorios->Size = System::Drawing::Size(203, 249);
-			this->RTBrecordatorios->TabIndex = 18;
-			this->RTBrecordatorios->Text = L"";
 			// 
 			// lblAgenda
 			// 
@@ -232,11 +227,21 @@ namespace Proyecto2MelissaMansilla1061719 {
 			this->label3->TabIndex = 26;
 			this->label3->Text = L"Dia:";
 			// 
+			// LBVista
+			// 
+			this->LBVista->FormattingEnabled = true;
+			this->LBVista->ItemHeight = 20;
+			this->LBVista->Location = System::Drawing::Point(441, 189);
+			this->LBVista->Name = L"LBVista";
+			this->LBVista->Size = System::Drawing::Size(185, 264);
+			this->LBVista->TabIndex = 32;
+			// 
 			// Calendario
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(660, 464);
+			this->Controls->Add(this->LBVista);
 			this->Controls->Add(this->TBDia);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->lblprueba);
@@ -246,7 +251,6 @@ namespace Proyecto2MelissaMansilla1061719 {
 			this->Controls->Add(this->CalendarioM);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btnAgregar);
-			this->Controls->Add(this->RTBrecordatorios);
 			this->Controls->Add(this->lblAgenda);
 			this->Controls->Add(this->lblSeleccion);
 			this->Controls->Add(this->Tbmonth);
@@ -255,13 +259,14 @@ namespace Proyecto2MelissaMansilla1061719 {
 			this->Controls->Add(this->lblaño);
 			this->Name = L"Calendario";
 			this->Text = L"Calendario";
+			this->Load += gcnew System::EventHandler(this, &Calendario::Calendario_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
 		
-		String^ user;
+		String^ user ;
 
 private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs^  e) {
 		MonthCalendar^ Calendario = gcnew MonthCalendar();
@@ -285,9 +290,9 @@ private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs
 				if (dia >= 1 && dia <= 31)
 				{
 					String^ cadena = day + "/" + month + "/" + year;
-					DateTime fecha = System::Convert::ToDateTime(day + "/" + month + "/" + year);
+					DateTime fechaP = System::Convert::ToDateTime(day + "/" + month + "/" + year);
 
-					CalendarioM->SetDate(fecha);
+					CalendarioM->SetDate(fechaP);
 					lblprueba->Text = cadena;
 				}
 				else
@@ -302,9 +307,9 @@ private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs
 				if (dia >= 1 && dia <= 30)
 				{
 					String^ cadena = day + "/" + month + "/" + year;
-					DateTime fecha = System::Convert::ToDateTime(day + "/" + month + "/" + year);
+					DateTime fechaP = System::Convert::ToDateTime(day + "/" + month + "/" + year);
 
-					CalendarioM->SetDate(fecha);
+					CalendarioM->SetDate(fechaP);
 					lblprueba->Text = cadena;
 				}
 				else
@@ -316,9 +321,9 @@ private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs
 				if (dia >= 1 && dia <= 29)
 				{
 					String^ cadena = day + "/" + month + "/" + year;
-					DateTime fecha = System::Convert::ToDateTime(day + "/" + month + "/" + year);
+					DateTime fechaP = System::Convert::ToDateTime(day + "/" + month + "/" + year);
 
-					CalendarioM->SetDate(fecha);
+					CalendarioM->SetDate(fechaP);
 					lblprueba->Text = cadena;
 				}
 				else
@@ -344,6 +349,16 @@ private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArg
 	actividadesForm->lbluserAl->Text = lbluser->Text;
 	actividadesForm->lbluserRe->Text = lbluser->Text;
 	actividadesForm->Show();
+}
+private: System::Void Calendario_Load(System::Object^  sender, System::EventArgs^  e) {
+
+}
+private: System::Void CalendarioM_DateSelected(System::Object^  sender, System::Windows::Forms::DateRangeEventArgs^  e) {
+	LBVista->Items->Clear();
+	String^ fecha = CalendarioM->SelectionRange->Start.ToShortDateString;
+
+	StreamReader^ sr = gcnew StreamReader(user + ".csv");
+
 }
 };
 }

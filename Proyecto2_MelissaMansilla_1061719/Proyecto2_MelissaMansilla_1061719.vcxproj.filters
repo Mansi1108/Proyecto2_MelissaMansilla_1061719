@@ -33,6 +33,15 @@
     <ClCompile Include="Lista.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Actividad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Recordatorio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Alarma.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Login.h">
@@ -51,6 +60,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Lista.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Actividad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recordatorio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Alarma.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
