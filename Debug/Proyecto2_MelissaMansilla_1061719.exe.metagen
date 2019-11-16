@@ -20,12 +20,24 @@ Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c5619
 Class Proyecto2MelissaMansilla1061719.Actividades: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Label lblfecha : Public
+    System.Windows.Forms.Label lblFechaREc : Public
+    System.Windows.Forms.Label lblFechaAl : Public
+    System.Windows.Forms.Label lbluserAC : Public
+    System.Windows.Forms.Label lbluserRe : Public
+    System.Windows.Forms.Label lbluserAl : Public
 Class Proyecto2MelissaMansilla1061719.Calendario: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Label lbluser : Public
+    System.Windows.Forms.Label lblprueba : Public
 Class Proyecto2MelissaMansilla1061719.Registro: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class Proyecto2MelissaMansilla1061719.Login: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.TextBox TBUser : Public

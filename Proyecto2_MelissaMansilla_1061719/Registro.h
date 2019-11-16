@@ -156,6 +156,7 @@ private: System::Void btnConfirmar_Click(System::Object^  sender, System::EventA
 	}
 private: System::Boolean Repetido(String^ user)
 {
+	//Procedimiento parecido al de encontrar, pero conla diferencia de los if de que si este encuentra el usuario dentro del archivo Users.csv es por que este ya se encuentra registrado.
 	StreamReader^ sr2 = gcnew StreamReader("Users.csv");
 	String^ cadena = sr2->ReadToEnd();
 	int pos;
@@ -165,15 +166,17 @@ private: System::Boolean Repetido(String^ user)
 	String^ aux;
 	while (cadena != "")
 	{
+		//Hasta que la cadena este completamente vacia por sacar cada substring este no parará.
 		pos = cadena->IndexOf(",");
 		Ouser = cadena->Substring(0, pos);
 		aux = cadena;
 		cadena = aux->Substring(pos + 1);
-		//Se saca la contraseña para no ocasionar problemas al extraer los usuarios y compararlos en tiempo real. 
+		 
 		pos = cadena->IndexOf(".");
 		Ocontra = cadena->Substring(0, pos);
 		aux = cadena;
 		cadena = aux->Substring(pos + 1);
+		//Se saca la contraseña para no ocasionar problemas al extraer los usuarios y compararlos en tiempo real
 		if (Ouser == user)
 		{
 			return true;

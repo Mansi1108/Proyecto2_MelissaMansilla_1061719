@@ -37,7 +37,9 @@ namespace Proyecto2MelissaMansilla1061719 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::TextBox^  TBUser;
+	public: System::Windows::Forms::TextBox^  TBUser;
+	protected:
+
 	protected:
 	private: System::Windows::Forms::Label^  lblusuario;
 	private: System::Windows::Forms::Label^  label1;
@@ -147,11 +149,12 @@ namespace Proyecto2MelissaMansilla1061719 {
 	private: System::Void btnIngresar_Click(System::Object^  sender, System::EventArgs^  e) {
 		String^ user = TBUser->Text;
 		String^ contra = TBContra->Text;
-
+		//se verifica si los campos estan vacios.
 		if (user != "" && contra != "")
 		{
 			if (Existe(user) == true)
 			{
+				//Si nuestra funcion retorna un true, este comienza a realizar las comparaciones para ver si la contraseña pertenece a ese usuario, o un caso poco comun si la contraseña pertenece o no a ese usuario.
 				StreamReader^ sr2 = gcnew StreamReader("Users.csv");
 				String^ cadena = sr2->ReadToEnd();
 				int pos;
@@ -174,8 +177,9 @@ namespace Proyecto2MelissaMansilla1061719 {
 
 					if ((Ouser == user) && (Ocontra == contra))
 					{
+						//Se crea una puerta para que salga del while si este lo encuentra, ya que si no se hace este realiza el while hasta recorrer todo.
 						find = true;
-						Abrir();
+						Abrir(user);
 						this->Hide();
 					}
 					else if ((Ouser != user) && (Ocontra == contra))
@@ -201,6 +205,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 	}
 	private: System::Boolean Existe(String^ user)
 {
+		//Metodo que evalua si el usuario existe en el archivo Users.csv, leyendo el archivo completo y separandolo por substring, para hacer las comparaciones en tiempo real y de manera sencilla.
 	StreamReader^ sr2 = gcnew StreamReader("Users.csv");
 	String^ cadena = sr2->ReadToEnd();
 	int pos;
@@ -229,12 +234,15 @@ namespace Proyecto2MelissaMansilla1061719 {
 }
 
 	private: System::Void btnRegistro_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Ejecución del form que contiene el registro.
 		Registro^ Register = gcnew Registro();
 		Register->Show();
 	}
-private: System::Void Abrir()
+private: System::Void Abrir(String^ user)
 {
+	//Se toman datos de forms anteriores y se llevan a otro label para contener la información anterior.
 	Calendario^ Calendario1 = gcnew Calendario();
+	Calendario1->lbluser->Text = TBUser->Text;
 	Calendario1->Show();
 }
 };

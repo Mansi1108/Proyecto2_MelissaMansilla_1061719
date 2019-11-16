@@ -135,7 +135,9 @@
   <ItemGroup>
     <ClCompile Include="Actividades.cpp" />
     <ClCompile Include="Calendario.cpp" />
+    <ClCompile Include="Lista.cpp" />
     <ClCompile Include="Login.cpp" />
+    <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="Registro.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -145,9 +147,12 @@
     <ClInclude Include="Calendario.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Lista.h" />
     <ClInclude Include="Login.h">
       <FileType>CppForm</FileType>
+      <DeploymentContent>false</DeploymentContent>
     </ClInclude>
+    <ClInclude Include="Nodo.h" />
     <ClInclude Include="Registro.h">
       <FileType>CppForm</FileType>
     </ClInclude>

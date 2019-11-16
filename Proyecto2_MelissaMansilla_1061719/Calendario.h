@@ -44,10 +44,21 @@ namespace Proyecto2MelissaMansilla1061719 {
 	private: System::Windows::Forms::RichTextBox^  RTBrecordatorios;
 	private: System::Windows::Forms::Label^  lblAgenda;
 	private: System::Windows::Forms::Label^  lblSeleccion;
-	private: System::Windows::Forms::TextBox^  Tbmonth;
+
 	private: System::Windows::Forms::TextBox^  TBaño;
-	private: System::Windows::Forms::Label^  lblMes;
+
 	private: System::Windows::Forms::Label^  lblaño;
+	private: System::Windows::Forms::Label^  label2;
+	public: System::Windows::Forms::Label^  lbluser;
+	public: System::Windows::Forms::Label^  lblprueba;
+
+	private: System::Windows::Forms::Label^  lblMes;
+	private: System::Windows::Forms::TextBox^  Tbmonth;
+	private: System::Windows::Forms::TextBox^  TBDia;
+	private: System::Windows::Forms::Label^  label3;
+	public:
+	private:
+
 
 	private:
 		/// <summary>
@@ -69,10 +80,15 @@ namespace Proyecto2MelissaMansilla1061719 {
 			this->RTBrecordatorios = (gcnew System::Windows::Forms::RichTextBox());
 			this->lblAgenda = (gcnew System::Windows::Forms::Label());
 			this->lblSeleccion = (gcnew System::Windows::Forms::Label());
-			this->Tbmonth = (gcnew System::Windows::Forms::TextBox());
 			this->TBaño = (gcnew System::Windows::Forms::TextBox());
-			this->lblMes = (gcnew System::Windows::Forms::Label());
 			this->lblaño = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->lbluser = (gcnew System::Windows::Forms::Label());
+			this->lblprueba = (gcnew System::Windows::Forms::Label());
+			this->lblMes = (gcnew System::Windows::Forms::Label());
+			this->Tbmonth = (gcnew System::Windows::Forms::TextBox());
+			this->TBDia = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// btnBuscar
@@ -135,18 +151,11 @@ namespace Proyecto2MelissaMansilla1061719 {
 			// lblSeleccion
 			// 
 			this->lblSeleccion->AutoSize = true;
-			this->lblSeleccion->Location = System::Drawing::Point(37, 140);
+			this->lblSeleccion->Location = System::Drawing::Point(37, 159);
 			this->lblSeleccion->Name = L"lblSeleccion";
 			this->lblSeleccion->Size = System::Drawing::Size(293, 20);
 			this->lblSeleccion->TabIndex = 16;
 			this->lblSeleccion->Text = L"Selecciona una fecha antes de agregar*";
-			// 
-			// Tbmonth
-			// 
-			this->Tbmonth->Location = System::Drawing::Point(83, 82);
-			this->Tbmonth->Name = L"Tbmonth";
-			this->Tbmonth->Size = System::Drawing::Size(126, 26);
-			this->Tbmonth->TabIndex = 15;
 			// 
 			// TBaño
 			// 
@@ -154,15 +163,6 @@ namespace Proyecto2MelissaMansilla1061719 {
 			this->TBaño->Name = L"TBaño";
 			this->TBaño->Size = System::Drawing::Size(126, 26);
 			this->TBaño->TabIndex = 14;
-			// 
-			// lblMes
-			// 
-			this->lblMes->AutoSize = true;
-			this->lblMes->Location = System::Drawing::Point(33, 88);
-			this->lblMes->Name = L"lblMes";
-			this->lblMes->Size = System::Drawing::Size(43, 20);
-			this->lblMes->TabIndex = 13;
-			this->lblMes->Text = L"Mes:";
 			// 
 			// lblaño
 			// 
@@ -173,11 +173,75 @@ namespace Proyecto2MelissaMansilla1061719 {
 			this->lblaño->TabIndex = 12;
 			this->lblaño->Text = L"Año:";
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(242, 18);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(68, 20);
+			this->label2->TabIndex = 23;
+			this->label2->Text = L"Usuario:";
+			// 
+			// lbluser
+			// 
+			this->lbluser->AutoSize = true;
+			this->lbluser->Location = System::Drawing::Point(319, 18);
+			this->lbluser->Name = L"lbluser";
+			this->lbluser->Size = System::Drawing::Size(73, 20);
+			this->lbluser->TabIndex = 24;
+			this->lbluser->Text = L"Usuario1";
+			// 
+			// lblprueba
+			// 
+			this->lblprueba->AutoSize = true;
+			this->lblprueba->Location = System::Drawing::Point(242, 117);
+			this->lblprueba->Name = L"lblprueba";
+			this->lblprueba->Size = System::Drawing::Size(49, 20);
+			this->lblprueba->TabIndex = 25;
+			this->lblprueba->Text = L"fecha";
+			// 
+			// lblMes
+			// 
+			this->lblMes->AutoSize = true;
+			this->lblMes->Location = System::Drawing::Point(33, 81);
+			this->lblMes->Name = L"lblMes";
+			this->lblMes->Size = System::Drawing::Size(43, 20);
+			this->lblMes->TabIndex = 13;
+			this->lblMes->Text = L"Mes:";
+			// 
+			// Tbmonth
+			// 
+			this->Tbmonth->Location = System::Drawing::Point(83, 75);
+			this->Tbmonth->Name = L"Tbmonth";
+			this->Tbmonth->Size = System::Drawing::Size(126, 26);
+			this->Tbmonth->TabIndex = 15;
+			// 
+			// TBDia
+			// 
+			this->TBDia->Location = System::Drawing::Point(83, 111);
+			this->TBDia->Name = L"TBDia";
+			this->TBDia->Size = System::Drawing::Size(126, 26);
+			this->TBDia->TabIndex = 27;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(33, 117);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(37, 20);
+			this->label3->TabIndex = 26;
+			this->label3->Text = L"Dia:";
+			// 
 			// Calendario
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(660, 464);
+			this->Controls->Add(this->TBDia);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->lblprueba);
+			this->Controls->Add(this->lbluser);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->btnBuscar);
 			this->Controls->Add(this->CalendarioM);
 			this->Controls->Add(this->label1);
@@ -196,16 +260,89 @@ namespace Proyecto2MelissaMansilla1061719 {
 
 		}
 #pragma endregion
-	private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs^  e) {
+		
+		String^ user;
+
+private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs^  e) {
 		MonthCalendar^ Calendario = gcnew MonthCalendar();
+		String^ day = TBDia->Text;
+		int dia = System::Convert::ToInt16(day);
 		String^ month = Tbmonth->Text;
+		int mes = System::Convert::ToInt16(month);
 		String^ year = TBaño->Text;
-		DateTime fecha = System::Convert::ToDateTime("01/" + month + "/" + year);
-		CalendarioM->SetDate(fecha);
+		//Validaciones de los numeros del dia y del mes, para que no ingresen numeros invalidos.
+		if (mes >= 1 && mes <= 12)
+		{
+			switch (mes)
+			{
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 12:
+				if (dia >= 1 && dia <= 31)
+				{
+					String^ cadena = day + "/" + month + "/" + year;
+					DateTime fecha = System::Convert::ToDateTime(day + "/" + month + "/" + year);
+
+					CalendarioM->SetDate(fecha);
+					lblprueba->Text = cadena;
+				}
+				else
+				{
+					System::Windows::Forms::MessageBox::Show("Ingrese dia válido.");
+				}
+				break;
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+				if (dia >= 1 && dia <= 30)
+				{
+					String^ cadena = day + "/" + month + "/" + year;
+					DateTime fecha = System::Convert::ToDateTime(day + "/" + month + "/" + year);
+
+					CalendarioM->SetDate(fecha);
+					lblprueba->Text = cadena;
+				}
+				else
+				{
+					System::Windows::Forms::MessageBox::Show("Ingrese dia válido.");
+				}
+				break;
+			case 2:
+				if (dia >= 1 && dia <= 29)
+				{
+					String^ cadena = day + "/" + month + "/" + year;
+					DateTime fecha = System::Convert::ToDateTime(day + "/" + month + "/" + year);
+
+					CalendarioM->SetDate(fecha);
+					lblprueba->Text = cadena;
+				}
+				else
+				{
+					System::Windows::Forms::MessageBox::Show("Ingrese dia válido.");
+				}
+				break;
+			}
+		}
+		else
+		{
+			System::Windows::Forms::MessageBox::Show("Ingrese mes válido.");
+		}
+		
 	}
 private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArgs^  e) {
-	String^ seleccionFe = Convert::ToString(CalendarioM->SelectionRange->Start);
+	//Se toman datos de forms anteriores y se llevan a otro label para contener la información anterior.
 	Actividades^ actividadesForm = gcnew Actividades();
+	actividadesForm->lblfecha->Text = lblprueba->Text;
+	actividadesForm->lblFechaAl->Text = lblprueba->Text;
+	actividadesForm->lblFechaREc->Text = lblprueba->Text;
+	actividadesForm->lbluserAC->Text = lbluser->Text;
+	actividadesForm->lbluserAl->Text = lbluser->Text;
+	actividadesForm->lbluserRe->Text = lbluser->Text;
 	actividadesForm->Show();
 }
 };
