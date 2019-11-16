@@ -163,7 +163,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 				String^ aux;
 				bool find = false;
 
-				while ((cadena != "") && (find == false)) 
+				while ((cadena != "") && (find == false))
 				{
 					pos = cadena->IndexOf(",");
 					Ouser = cadena->Substring(0, pos);
@@ -200,46 +200,46 @@ namespace Proyecto2MelissaMansilla1061719 {
 		}
 	}
 	private: System::Boolean Existe(String^ user)
-{
-		//Metodo que evalua si el usuario existe en el archivo Users.csv, leyendo el archivo completo y separandolo por substring, para hacer las comparaciones en tiempo real y de manera sencilla.
-	StreamReader^ sr2 = gcnew StreamReader("Users.csv");
-	String^ cadena = sr2->ReadToEnd();
-	int pos;
-
-	String^ Ouser;
-	String^ Ocontra;
-	String^ aux;
-	while (cadena != "")
 	{
-		pos = cadena->IndexOf(",");
-		Ouser = cadena->Substring(0, pos);
-		aux = cadena;
-		cadena = aux->Substring(pos + 1);
-		//Se saca la contraseña para no ocasionar problemas al extraer los usuarios y compararlos en tiempo real. 
-		pos = cadena->IndexOf(".");
-		Ocontra = cadena->Substring(0, pos);
-		aux = cadena;
-		cadena = aux->Substring(pos + 1);
-		if (Ouser == user)
+		//Metodo que evalua si el usuario existe en el archivo Users.csv, leyendo el archivo completo y separandolo por substring, para hacer las comparaciones en tiempo real y de manera sencilla.
+		StreamReader^ sr2 = gcnew StreamReader("Users.csv");
+		String^ cadena = sr2->ReadToEnd();
+		int pos;
+
+		String^ Ouser;
+		String^ Ocontra;
+		String^ aux;
+		while (cadena != "")
 		{
-			return true;
+			pos = cadena->IndexOf(",");
+			Ouser = cadena->Substring(0, pos);
+			aux = cadena;
+			cadena = aux->Substring(pos + 1);
+			//Se saca la contraseña para no ocasionar problemas al extraer los usuarios y compararlos en tiempo real. 
+			pos = cadena->IndexOf(".");
+			Ocontra = cadena->Substring(0, pos);
+			aux = cadena;
+			cadena = aux->Substring(pos + 1);
+			if (Ouser == user)
+			{
+				return true;
+			}
 		}
+		sr2->Close();
+		return false;
 	}
-	sr2->Close();
-	return false;
-}
 
 	private: System::Void btnRegistro_Click(System::Object^  sender, System::EventArgs^  e) {
 		//Ejecución del form que contiene el registro.
 		Registro^ Register = gcnew Registro();
 		Register->Show();
 	}
-private: System::Void Abrir(String^ user)
-{
-	//Se toman datos de forms anteriores y se llevan a otro label para contener la información anterior.
-	Calendario^ Calendario1 = gcnew Calendario();
-	Calendario1->lbluser->Text = TBUser->Text;
-	Calendario1->Show();
-}
-};
+	private: System::Void Abrir(String^ user)
+	{
+		//Se toman datos de forms anteriores y se llevan a otro label para contener la información anterior.
+		Calendario^ Calendario1 = gcnew Calendario();
+		Calendario1->lbluser->Text = TBUser->Text;
+		Calendario1->Show();
+	}
+	};
 }

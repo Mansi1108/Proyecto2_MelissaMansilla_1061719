@@ -817,7 +817,7 @@ private: System::Void BtnGuarAlarma_Click(System::Object^  sender, System::Event
 		String^ descripccionAL = RTBDesA->Text;
 		String^ fecha = lblFechaAl->Text;
 		String^ userG = lbluserAl->Text;
-		texto = "\n" + texto + "Al," + fecha + "," + horaAL + "," + descripccionAL + ".";
+		texto = "\n" + texto + "Ala," + fecha + "," + horaAL + "," + descripccionAL + ".";
 
 
 		StreamReader^ sr = gcnew StreamReader(userG + ".csv");

@@ -1,9 +1,9 @@
 ﻿  Calendario.cpp
-d:\mansilla\url\prograavanzada\proyecto2_melissamansilla_1061719\proyecto2_melissamansilla_1061719\calendario.h(390): warning C4101: 'pos': unreferenced local variable
-d:\mansilla\url\prograavanzada\proyecto2_melissamansilla_1061719\proyecto2_melissamansilla_1061719\calendario.h(393): warning C4101: 'aux': unreferenced local variable
+d:\mansilla\url\prograavanzada\proyecto2_melissamansilla_1061719\proyecto2_melissamansilla_1061719\calendario.h(387): warning C4101: 'prioridad': unreferenced local variable
+d:\mansilla\url\prograavanzada\proyecto2_melissamansilla_1061719\proyecto2_melissamansilla_1061719\calendario.h(388): warning C4101: 'Ide': unreferenced local variable
   Login.cpp
-d:\mansilla\url\prograavanzada\proyecto2_melissamansilla_1061719\proyecto2_melissamansilla_1061719\calendario.h(390): warning C4101: 'pos': unreferenced local variable
-d:\mansilla\url\prograavanzada\proyecto2_melissamansilla_1061719\proyecto2_melissamansilla_1061719\calendario.h(393): warning C4101: 'aux': unreferenced local variable
+d:\mansilla\url\prograavanzada\proyecto2_melissamansilla_1061719\proyecto2_melissamansilla_1061719\calendario.h(387): warning C4101: 'prioridad': unreferenced local variable
+d:\mansilla\url\prograavanzada\proyecto2_melissamansilla_1061719\proyecto2_melissamansilla_1061719\calendario.h(388): warning C4101: 'Ide': unreferenced local variable
   Generating Code...
   Actividad.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Proyecto2_MelissaMansilla_1061719.vcxproj -> D:\Mansilla\URL\PrograAvanzada\Proyecto2_MelissaMansilla_1061719\Debug\Proyecto2_MelissaMansilla_1061719.exe

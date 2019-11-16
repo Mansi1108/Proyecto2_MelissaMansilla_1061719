@@ -10,6 +10,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::IO;
+	using namespace System::Media;
 
 	/// <summary>
 	/// Summary for Calendario
@@ -59,6 +60,8 @@ namespace Proyecto2MelissaMansilla1061719 {
 
 
 	private: System::Windows::Forms::ListBox^  LBVista;
+	private: System::Windows::Forms::Timer^  Timer;
+	private: System::ComponentModel::IContainer^  components;
 	public:
 	private:
 
@@ -67,7 +70,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -76,6 +79,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->btnBuscar = (gcnew System::Windows::Forms::Button());
 			this->CalendarioM = (gcnew System::Windows::Forms::MonthCalendar());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -92,6 +96,7 @@ namespace Proyecto2MelissaMansilla1061719 {
 			this->TBDia = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->LBVista = (gcnew System::Windows::Forms::ListBox());
+			this->Timer = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
 			// 
 			// btnBuscar
@@ -230,11 +235,17 @@ namespace Proyecto2MelissaMansilla1061719 {
 			// LBVista
 			// 
 			this->LBVista->FormattingEnabled = true;
+			this->LBVista->HorizontalScrollbar = true;
 			this->LBVista->ItemHeight = 20;
 			this->LBVista->Location = System::Drawing::Point(441, 189);
 			this->LBVista->Name = L"LBVista";
 			this->LBVista->Size = System::Drawing::Size(185, 264);
 			this->LBVista->TabIndex = 32;
+			// 
+			// Timer
+			// 
+			this->Timer->Interval = 500000;
+			this->Timer->Tick += gcnew System::EventHandler(this, &Calendario::Timer_Tick);
 			// 
 			// Calendario
 			// 
@@ -265,10 +276,10 @@ namespace Proyecto2MelissaMansilla1061719 {
 
 		}
 #pragma endregion
-		
-		String^ user ;
 
-private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs^  e) {
+		String^ user;
+
+	private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs^  e) {
 		MonthCalendar^ Calendario = gcnew MonthCalendar();
 		String^ day = TBDia->Text;
 		int dia = System::Convert::ToInt16(day);
@@ -289,11 +300,11 @@ private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs
 			case 12:
 				if (dia >= 1 && dia <= 31)
 				{
-					String^ cadena = day + "/" + month + "/" + year;
-					DateTime fechaP = System::Convert::ToDateTime(day + "/" + month + "/" + year);
+					String^ cadena = month + "/" + day + "/" + year;
+					DateTime fechaP = System::Convert::ToDateTime(month + "/" + day + "/" + year);
 
 					CalendarioM->SetDate(fechaP);
-					lblprueba->Text = cadena;
+					lblprueba->Text = fechaP.ToString();
 				}
 				else
 				{
@@ -306,11 +317,11 @@ private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs
 			case 11:
 				if (dia >= 1 && dia <= 30)
 				{
-					String^ cadena = day + "/" + month + "/" + year;
-					DateTime fechaP = System::Convert::ToDateTime(day + "/" + month + "/" + year);
+					String^ cadena = month + "/" + day + "/" + year;
+					DateTime fechaP = System::Convert::ToDateTime(month + "/" + day + "/" + year);
 
 					CalendarioM->SetDate(fechaP);
-					lblprueba->Text = cadena;
+					lblprueba->Text = fechaP.ToString();
 				}
 				else
 				{
@@ -320,11 +331,11 @@ private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs
 			case 2:
 				if (dia >= 1 && dia <= 29)
 				{
-					String^ cadena = day + "/" + month + "/" + year;
-					DateTime fechaP = System::Convert::ToDateTime(day + "/" + month + "/" + year);
+					String^ cadena = month + "/" + day + "/" + year;
+					DateTime fechaP = System::Convert::ToDateTime(month + "/" + day + "/" + year);
 
 					CalendarioM->SetDate(fechaP);
-					lblprueba->Text = cadena;
+					lblprueba->Text = fechaP.ToString();
 				}
 				else
 				{
@@ -337,28 +348,273 @@ private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs
 		{
 			System::Windows::Forms::MessageBox::Show("Ingrese mes válido.");
 		}
-		
+
 	}
-private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArgs^  e) {
-	//Se toman datos de forms anteriores y se llevan a otro label para contener la información anterior.
-	Actividades^ actividadesForm = gcnew Actividades();
-	actividadesForm->lblfecha->Text = lblprueba->Text;
-	actividadesForm->lblFechaAl->Text = lblprueba->Text;
-	actividadesForm->lblFechaREc->Text = lblprueba->Text;
-	actividadesForm->lbluserAC->Text = lbluser->Text;
-	actividadesForm->lbluserAl->Text = lbluser->Text;
-	actividadesForm->lbluserRe->Text = lbluser->Text;
-	actividadesForm->Show();
-}
-private: System::Void Calendario_Load(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Se toman datos de forms anteriores y se llevan a otro label para contener la información anterior.
+		Actividades^ actividadesForm = gcnew Actividades();
+		actividadesForm->lblfecha->Text = lblprueba->Text;
+		actividadesForm->lblFechaAl->Text = lblprueba->Text;
+		actividadesForm->lblFechaREc->Text = lblprueba->Text;
+		actividadesForm->lbluserAC->Text = lbluser->Text;
+		actividadesForm->lbluserAl->Text = lbluser->Text;
+		actividadesForm->lbluserRe->Text = lbluser->Text;
+		actividadesForm->Show();
+	}
+	private: System::Void Calendario_Load(System::Object^  sender, System::EventArgs^  e) {
 
-}
-private: System::Void CalendarioM_DateSelected(System::Object^  sender, System::Windows::Forms::DateRangeEventArgs^  e) {
-	LBVista->Items->Clear();
-	String^ fecha = CalendarioM->SelectionRange->Start.ToShortDateString;
+	}
+	private: System::Void CalendarioM_DateSelected(System::Object^  sender, System::Windows::Forms::DateRangeEventArgs^  e) {
+		LBVista->Items->Clear();
+		String^ userS = lbluser->Text;
+		String^ fecha = CalendarioM->SelectionRange->Start.ToShortDateString();
+		if (fecha->Length <= 9)
+		{
+			fecha = fecha->Insert(3, "0");
+		}
+		StreamReader^ srS = gcnew StreamReader(userS + ".csv");
+		int pos;
+		String^ aux;
+		String^ evento;
+		String^ fechaS;
+		String^ horaI;
+		String^ horaF;
+		String^ horaS;
+		String^ lugar;
+		String^ personas;
+		String^ material;
+		String^ descripccionS;
+		String^ prioridad;
+		String^ Ide;
+		String^ imprimir;
+		//Lee la linea encontrando la fecha dentro del archivo.
+		String^ line = srS->ReadLine();
+		String^ line2 = srS->ReadLine();
+		while (line2 != "")
+		{
+			if (line2->Contains(fecha))
+			{
+				String^ eventoTag = line2->Substring(0, 3);
+				if (eventoTag == "Rec")
+				{
+					pos = line2->IndexOf(",");
+					evento = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
 
-	StreamReader^ sr = gcnew StreamReader(user + ".csv");
+					pos = line2->IndexOf(",");
+					fechaS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
 
-}
-};
+					pos = line2->IndexOf(",");
+					horaS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(".");
+					descripccionS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					imprimir = "Evento:" + evento + "ordatorio" + "," + "Fecha:" + fechaS + "," + "Hora: " + horaS + "," + "Descripcción: " + descripccionS + ".";
+					LBVista->Items->Add(imprimir);
+
+				}
+				else if (eventoTag == "Ala")
+				{
+					pos = line2->IndexOf(",");
+					evento = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					fechaS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					horaS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(".");
+					descripccionS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					imprimir = "Evento:" + evento + "rma" + ", " + "Fecha:" + fechaS + ", " + "Hora: " + horaS + ", " + "Descripcción: " + descripccionS + ".";
+					LBVista->Items->Add(imprimir);
+
+
+				}
+				else if (eventoTag == "Act")
+				{
+					pos = line2->IndexOf(",");
+					evento = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					fechaS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					horaI = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					horaF = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					lugar = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					personas = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					descripccionS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(".");
+					material = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					imprimir = "Evento:" + evento + "ividad" + "," + "Fecha:" + fechaS + "," + "Hora Inicio: " + horaI + ","  "Hora Final: " + horaF + "," + "Descripcción: " + descripccionS + ".";
+					LBVista->Items->Add(imprimir);
+				}
+			}
+		}
+
+	}
+	private: System::Void Timer_Tick(System::Object^  sender, System::EventArgs^  e) {
+
+		String^ userS = lbluser->Text;
+		String^ fecha = CalendarioM->SelectionRange->Start.ToShortDateString();
+		if (fecha->Length <= 9)
+		{
+			fecha = fecha->Insert(3, "0");
+		}
+		StreamReader^ srS = gcnew StreamReader(userS + ".csv");
+		int pos;
+		String^ aux;
+		String^ evento;
+		String^ fechaS;
+		String^ horaI;
+		String^ horaF;
+		String^ horaS;
+
+
+		//Lee la linea encontrando la fecha dentro del archivo.
+		String^ line = srS->ReadLine();
+		String^ line2 = srS->ReadLine();
+		while (line2 != "")
+		{
+			if (line2->Contains(fecha))
+			{
+				String^ eventoTag = line2->Substring(0, 3);
+				if (eventoTag == "Rec")
+				{
+					pos = line2->IndexOf(",");
+					evento = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					fechaS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					horaS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					if (horaS == DateTime::Now.ToString("H:mm"))
+					{
+
+						SoundPlayer^ sonido = gcnew SoundPlayer();
+						sonido->SoundLocation = "..//time-up.wav";
+						sonido->Play();
+
+					}
+
+				}
+				else if (eventoTag == "Ala")
+				{
+					pos = line2->IndexOf(",");
+					evento = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					fechaS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					horaS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+
+					if (horaS == DateTime::Now.ToString("H:mm"))
+					{
+
+						SoundPlayer^ sonido = gcnew SoundPlayer();
+						sonido->SoundLocation = "..//time-up.wav";
+						sonido->Play();
+
+					}
+
+
+				}
+				else if (eventoTag == "Act")
+				{
+					pos = line2->IndexOf(",");
+					evento = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					fechaS = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					horaI = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					pos = line2->IndexOf(",");
+					horaF = line2->Substring(0, pos);
+					aux = line2;
+					line2 = aux->Substring(pos + 1);
+
+					if (horaI == DateTime::Now.ToString("H:mm"))
+					{
+
+						SoundPlayer^ sonido = gcnew SoundPlayer();
+						sonido->SoundLocation = "..//time-up.wav";
+						sonido->Play();
+
+					}
+				}
+			}
+
+
+		}
+	}
+	};
+
 }
